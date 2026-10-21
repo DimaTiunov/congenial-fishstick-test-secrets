@@ -1,0 +1,26 @@
+<div class="support">
+    <h1>Мои обращения</h1>
+
+    <form id="support-create" method="post" action="create/" enctype="multipart/form-data">
+        <input type="text" name="subject" placeholder="Тема">
+        <textarea name="body" placeholder="Опишите проблему"></textarea>
+        <input type="file" name="attachment">
+        <button type="submit">Отправить</button>
+    </form>
+
+    <input type="search" id="support-search" placeholder="Поиск по теме">
+
+    <div id="support-list">
+        {foreach $tickets as $t}
+            <div class="ticket">
+                <h3><a href="{$t.id}/">{$t.subject}</a></h3>
+                <span class="status">{$t.status}</span>
+                <a href="/support/t/{$t.public_token}/">Публичная ссылка</a>
+            </div>
+        {foreachelse}
+            <p>Обращений пока нет.</p>
+        {/foreach}
+    </div>
+</div>
+
+<script src="{$wa_app_static_url}js/support.js"></script>

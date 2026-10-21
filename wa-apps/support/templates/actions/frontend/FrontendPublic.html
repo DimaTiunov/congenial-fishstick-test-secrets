@@ -1,0 +1,10 @@
+<div class="support-public">
+    <h1>{$ticket.subject}</h1>
+    <p class="meta">{$ticket.contact_email}, {$ticket.status}</p>
+
+    <div class="body">{$ticket.body|nl2br}</div>
+
+    {foreach $comments as $c}
+        <div class="comment {if $c.is_staff}staff{/if}">{$c.body}</div>
+    {/foreach}
+</div>
